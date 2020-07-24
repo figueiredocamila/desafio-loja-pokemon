@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <Button :text="'camila'" :onClick="clicado"/>
+    <product-card />
   </div>
 </template>
 
 <script>
-import Button from '@/components/atoms/button/Button.vue';
+import ProductCard from '@/components/molecules/productCard/ProductCard.vue';
 
 export default {
   name: 'Home',
   components: {
-    Button,
+    ProductCard,
   },
   methods: {
     clicado() {
