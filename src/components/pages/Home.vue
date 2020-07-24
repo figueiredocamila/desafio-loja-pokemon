@@ -1,21 +1,25 @@
 <template>
   <div class="home">
-    <product-card :isCheckout="false"/>
+    <search-input  v-model="searchText"/>
+    <span>{{searchText}}</span>
   </div>
 </template>
 
 <script>
-import productCard from '@/components/molecules/productCard/ProductCard.vue';
+import SearchInput from '@/components/atoms/input/Input.vue';
 
 export default {
   name: 'Home',
+
+  data: () => ({
+    searchText: '',
+  }),
+
   components: {
-    productCard,
+    SearchInput,
   },
-  methods: {
-    clicado() {
-      console.log('clicado');
-    },
+
+  computed: {
   },
 };
 </script>
