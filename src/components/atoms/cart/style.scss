@@ -1,0 +1,28 @@
+.cart {
+    border: none;
+    background-color: transparent;
+    position: relative;
+
+    img {
+        width: 40px;
+    }
+
+    &__count {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        background-color: #F4A513;
+        position: absolute;
+        top: 28px;
+
+        span {
+            font-size: .8em;
+            font-weight: bold;
+            color: white;
+        }
+
+    }
+}

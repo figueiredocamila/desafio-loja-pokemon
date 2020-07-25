@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick" class="button">
+  <button @click="$emit('onClick')" class="button">
     <!-- <i><img src="@/assets/backpack.svg" /></i> -->
     <span>{{text || 'botão'}}</span>
     </button>

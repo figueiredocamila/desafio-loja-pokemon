@@ -1,12 +1,11 @@
 <template>
   <div class="home">
-    <search-input  v-model="searchText"/>
-    <span>{{searchText}}</span>
+    <Cart />
   </div>
 </template>
 
 <script>
-import SearchInput from '@/components/atoms/input/Input.vue';
+import Cart from '@/components/atoms/cart/Cart.vue';
 
 export default {
   name: 'Home',
@@ -16,7 +15,7 @@ export default {
   }),
 
   components: {
-    SearchInput,
+    Cart,
   },
 
   computed: {
