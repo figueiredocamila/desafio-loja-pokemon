@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <Header />
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from '@/components/molecules/header/Header.vue';
+import Footer from '@/components/organisms/footer/Footer.vue';
 
 export default {
   name: 'Home',
@@ -15,7 +15,7 @@ export default {
   }),
 
   components: {
-    Header,
+    Footer,
   },
 
   computed: {
