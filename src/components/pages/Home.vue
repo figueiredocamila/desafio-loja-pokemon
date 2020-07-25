@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <Checkout />
+    <default-template />
   </div>
 </template>
 
 <script>
-import Checkout from '@/components/organisms/checkout/Checkout.vue';
+import DefaultTemplate from '@/components/templates/defaultTemplate/DefaultTemplate.vue';
 
 export default {
   name: 'Home',
@@ -15,7 +15,7 @@ export default {
   }),
 
   components: {
-    Checkout,
+    DefaultTemplate,
   },
 
   computed: {

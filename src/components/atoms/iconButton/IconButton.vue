@@ -1,7 +1,7 @@
 <template>
-  <button @click="$emit('onClick')" class="cart">
+  <button @click="$emit('onClick')" class="icon-button">
     <i><img :src="imageUrl" /></i>
-    <div v-if="count" class="cart__count">
+    <div v-if="count" class="icon-button__count">
       <span>{{count}}</span>
   </div>
   </button>

@@ -2,7 +2,7 @@
   <div class="checkout">
     <div class="checkout__title">
       <span>Mochila</span>
-      <Cart :imageUrl="require('@/assets/close.svg')" :onClick="open=false" />
+      <IconButton :imageUrl="require('@/assets/close.svg')" :onClick="isCheckoutOpen(false)" />
     </div>
     <div class="checkout__body">
       <div class="checkout__body--card" v-for="product in 10" :key="product.id">
@@ -17,19 +17,24 @@
 </template>
 <script>
 import Button from '@/components/atoms/button/Button.vue';
-import Cart from '@/components/atoms/cart/Cart.vue';
+import IconButton from '@/components/atoms/iconButton/IconButton.vue';
 import ProductCard from '@/components/molecules/productCard/ProductCard.vue';
 import Resume from '@/components/molecules/resume/Resume.vue';
 
 export default {
-  props: ['open', 'value'],
+  props: ['value'],
   components: {
     Button,
-    Cart,
+    IconButton,
     ProductCard,
     Resume,
   },
 
+  methods: {
+    isCheckoutOpen(status) {
+      this.$store.commit('setCheckoutStatus', status);
+    },
+  },
 };
 </script>
 <style lang="scss">
