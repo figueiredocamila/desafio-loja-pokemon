@@ -7,10 +7,7 @@
       <product-card isCheckout="true" />
     </div>
     <div class="checkout__resume">
-      <div>
-        <span>Total:</span>
-        <span>R$ 1000</span>
-      </div>
+      <Resume :value="10000"/>
       <Button :text="`finalizar compra`" />
     </div>
   </div>
@@ -18,11 +15,13 @@
 <script>
 import Button from '@/components/atoms/button/Button.vue';
 import ProductCard from '@/components/molecules/productCard/ProductCard.vue';
+import Resume from '@/components/molecules/resume/Resume.vue';
 
 export default {
   components: {
     Button,
     ProductCard,
+    Resume,
   },
 
 };
