@@ -1,14 +1,14 @@
 <template>
   <button @click="$emit('onClick')" class="cart">
-    <i><img src="@/assets/backpack.svg" /></i>
-    <div class="cart__count">
+    <i><img :src="imageUrl" /></i>
+    <div v-if="count" class="cart__count">
       <span>{{count}}</span>
-    </div>
+  </div>
   </button>
 </template>
 <script>
 export default {
-  props: ['count'],
+  props: ['count', 'imageUrl'],
 };
 </script>
 <style lang="scss">

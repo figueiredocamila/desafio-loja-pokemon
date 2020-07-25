@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <Footer />
+    <Checkout />
   </div>
 </template>
 
 <script>
-import Footer from '@/components/organisms/footer/Footer.vue';
+import Checkout from '@/components/organisms/checkout/Checkout.vue';
 
 export default {
   name: 'Home',
@@ -15,7 +15,7 @@ export default {
   }),
 
   components: {
-    Footer,
+    Checkout,
   },
 
   computed: {
