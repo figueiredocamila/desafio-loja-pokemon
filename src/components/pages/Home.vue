@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <Cart />
+    <Header />
   </div>
 </template>
 
 <script>
-import Cart from '@/components/atoms/cart/Cart.vue';
+import Header from '@/components/molecules/header/Header.vue';
 
 export default {
   name: 'Home',
@@ -15,7 +15,7 @@ export default {
   }),
 
   components: {
-    Cart,
+    Header,
   },
 
   computed: {
