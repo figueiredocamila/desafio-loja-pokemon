@@ -1,5 +1,8 @@
 .checkout {
   border: 1px solid #E6E3D8;
+  position: absolute;
+  top: 0;
+  left: 0;
 
   &__title {
     width: 100%;
@@ -14,10 +17,19 @@
     color: white;
     background-color: #F4A513;
     border-bottom: 1px solid #E6E3D8;
+
+    & > button {
+      position: absolute;
+      right: 4px;
+    }
   }
 
   &__body {
-    padding: 8px;
+    padding-top: 50px;
+
+    &--card {
+      padding: 8px;
+    }
   }
 
   &__resume {

@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <span class="header__title">PokeStore.</span>
-    <Cart :count="count" />
+    <Cart :count="count" :imageUrl="require('@/assets/backpack.svg')" />
   </div>
 </template>
 <script>
