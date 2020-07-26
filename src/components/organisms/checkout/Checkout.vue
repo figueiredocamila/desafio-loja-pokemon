@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="checkout__resume">
-        <Resume :value="value"/>
+        <Resume :value="totalCheckout"/>
         <Button :text="`finalizar compra`" @onClick="limpar" />
       </div>
     </div>
@@ -28,7 +28,6 @@ import Resume from '@/components/molecules/resume/Resume.vue';
 import { clearLocalCheckout } from '@/utils/localCheckout';
 
 export default {
-  props: ['value'],
   components: {
     Button,
     IconButton,
@@ -39,6 +38,12 @@ export default {
   computed: {
     checkoutList() {
       return this.$store.getters.checkoutList;
+    },
+
+    totalCheckout() {
+      const productPrices = this.checkoutList.map((list) => list.price);
+      const total = productPrices.reduce((acc, value) => acc + value);
+      return total.toFixed(2);
     },
 
   },

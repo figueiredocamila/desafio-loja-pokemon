@@ -1,7 +1,7 @@
 <template>
 <div class="shelf">
   <div class="shelf__card" v-for="product in products" :key="product.id">
-    <product-card :product="product" />
+    <product-card :product="{...product, price: 4.99}" />
   </div>
 </div>
 </template>

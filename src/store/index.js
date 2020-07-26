@@ -30,16 +30,16 @@ const store = new Vuex.Store({
         let productList = (await PokeApi.getPokemonList()).data.pokemon;
         productList = productList.map((item) => item.pokemon);
         commit('setProductList', productList);
-      } catch (error) {
-        console.log(error);
+      } catch (e) {
+        console.error(e);
       }
     },
 
     addItemsToCheckout({ commit }, payload) {
       try {
         commit('setCheckoutList', payload);
-      } catch (error) {
-        console.log(error);
+      } catch (e) {
+        console.error(e);
       }
     },
   },

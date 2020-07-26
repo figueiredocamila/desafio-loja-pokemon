@@ -1,10 +1,12 @@
 <template>
   <div :class="`product-card ${isCheckout ? 'product-card--checkout' : ''}`">
     <div class="product-card__image-wrap">
-      <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIdFromUrl(product.url)}.png`" />
+      <img
+        :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIdFromUrl(product.url)}.png`"
+      />
     </div>
     <span class="product-card__title">{{product.name || 'Nome do produto'}}</span>
-    <span class="product-card__price">R$ {{price || '100,00'}}</span>
+    <span class="product-card__price">R$ {{product.price || 'Preço do produto'}}</span>
     <Button v-if="!isCheckout"
       :text="'incluir na mochila'"
       @onClick="() => addItemToCheckout(product)"/>
@@ -17,15 +19,15 @@ import Button from '@/components/atoms/button/Button.vue';
 export default {
   name: 'ProductCard',
 
-  props: ['product', 'price', 'onClick', 'imgUrl', 'isCheckout'],
+  props: ['product', 'isCheckout'],
 
   components: {
     Button,
   },
 
   methods: {
-    addItemToCheckout(product) {
-      this.$store.dispatch('addItemsToCheckout', product);
+    addItemToCheckout(item) {
+      this.$store.dispatch('addItemsToCheckout', item);
     },
 
     getIdFromUrl(url) {
