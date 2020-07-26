@@ -13,7 +13,7 @@
       <icon-button
       :text="'Excluir'"
       :imageUrl="require('@/assets/delete.svg')"
-      @onClick="() => deleteProductFromCheckout(product)"/>
+      @onClick="() => removeProductFromCheckout(product)"/>
     </div>
     <Button v-if="!isCheckout"
       :text="'incluir na mochila'"
@@ -37,11 +37,11 @@ export default {
 
   methods: {
     addItemToCheckout(item) {
-      this.$store.dispatch('addItemsToCheckout', item);
+      this.$store.dispatch('addItemToCheckout', item);
     },
 
-    deleteProductFromCheckout() {
-      console.log('camila');
+    removeProductFromCheckout(item) {
+      this.$store.dispatch('removeItemFromCheckout', item);
     },
 
     getIdFromUrl(url) {

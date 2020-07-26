@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :style="`background-color: ${headerColor};`">
     <span class="header__title">PokeStore.</span>
     <icon-button
       :count="count"
@@ -20,6 +20,14 @@ export default {
   computed: {
     count() {
       return this.$store.getters.checkoutList.length;
+    },
+
+    headerColor() {
+      console.log(process.env.VUE_APP_POKEMON_TYPE);
+      if (process.env.VUE_APP_POKEMON_TYPE === '10') {
+        return '#CE5043';
+      }
+      return '#1E80A8';
     },
   },
 

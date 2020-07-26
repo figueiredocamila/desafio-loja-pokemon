@@ -35,9 +35,20 @@ const store = new Vuex.Store({
       }
     },
 
-    addItemsToCheckout({ commit }, payload) {
+    addItemToCheckout({ commit }, payload) {
       try {
         commit('setCheckoutList', payload);
+      } catch (e) {
+        console.error(e);
+      }
+    },
+
+    removeItemFromCheckout({ commit }, payload) {
+      try {
+        const checkoutList = [...this.state.checkoutList];
+        const itemIndex = checkoutList.findIndex((i) => i.name === payload.name);
+        checkoutList.splice(itemIndex, 1);
+        commit('removeItemFromCheckoutList', checkoutList);
       } catch (e) {
         console.error(e);
       }
@@ -57,6 +68,12 @@ const store = new Vuex.Store({
       state.checkoutList = [...state.checkoutList, payload];
       setLocalCheckout(JSON.stringify(state.checkoutList));
     },
+
+    removeItemFromCheckoutList(state, payload) {
+      state.checkoutList = payload;
+      setLocalCheckout(JSON.stringify(state.checkoutList));
+    },
+
   },
 
 });

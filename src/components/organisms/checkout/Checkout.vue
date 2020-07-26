@@ -41,7 +41,6 @@ export default {
     },
 
     totalCheckout() {
-      console.log('checkoutlist', this.checkoutList);
       if (this.checkoutList.length > 0) {
         const productPrices = this.checkoutList.map((list) => list.price);
         const total = productPrices.reduce((acc, value) => acc + value);
