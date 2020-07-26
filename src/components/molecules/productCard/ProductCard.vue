@@ -2,11 +2,19 @@
   <div :class="`product-card ${isCheckout ? 'product-card--checkout' : ''}`">
     <div class="product-card__image-wrap">
       <img
-        :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIdFromUrl(product.url)}.png`"
+        :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIdFromUrl(product.url)}.png` || '@/assets/image-not-available'"
       />
     </div>
-    <span class="product-card__title">{{product.name || 'Nome do produto'}}</span>
-    <span class="product-card__price">R$ {{product.price || 'Preço do produto'}}</span>
+    <div :class="`product-card${isCheckout ? '__info-wrap--checkout' : '__info-wrap'}`">
+      <span class="product-card__title">{{product.name || 'Nome do produto'}}</span>
+      <span class="product-card__price">R$ {{product.price || 'Preço do produto'}}</span>
+    </div>
+    <div class="product-card__actions" v-if="isCheckout">
+      <icon-button
+      :text="'Excluir'"
+      :imageUrl="require('@/assets/delete.svg')"
+      @onClick="() => deleteProductFromCheckout(product)"/>
+    </div>
     <Button v-if="!isCheckout"
       :text="'incluir na mochila'"
       @onClick="() => addItemToCheckout(product)"/>
@@ -15,6 +23,7 @@
 
 <script>
 import Button from '@/components/atoms/button/Button.vue';
+import IconButton from '@/components/atoms/iconButton/IconButton.vue';
 
 export default {
   name: 'ProductCard',
@@ -23,11 +32,16 @@ export default {
 
   components: {
     Button,
+    IconButton,
   },
 
   methods: {
     addItemToCheckout(item) {
       this.$store.dispatch('addItemsToCheckout', item);
+    },
+
+    deleteProductFromCheckout() {
+      console.log('camila');
     },
 
     getIdFromUrl(url) {

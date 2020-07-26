@@ -1,5 +1,5 @@
 <template>
-  <div class="default">
+  <div class="defaultTemplate">
     <slot name="header">
       <Header />
     </slot>
@@ -19,9 +19,5 @@ export default {
     Header,
     Footer,
   },
-
 };
 </script>
-<style lang="scss">
-  @import './style.scss';
-</style>

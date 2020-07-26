@@ -1,6 +1,6 @@
 <template>
   <input
-    class="input"
+    class="search-input"
     type="text"
     placeholder="Procure seu Pokemón"
     v-bind:value="value"

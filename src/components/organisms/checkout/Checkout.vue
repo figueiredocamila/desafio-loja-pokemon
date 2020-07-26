@@ -41,9 +41,13 @@ export default {
     },
 
     totalCheckout() {
-      const productPrices = this.checkoutList.map((list) => list.price);
-      const total = productPrices.reduce((acc, value) => acc + value);
-      return total.toFixed(2);
+      console.log('checkoutlist', this.checkoutList);
+      if (this.checkoutList.length > 0) {
+        const productPrices = this.checkoutList.map((list) => list.price);
+        const total = productPrices.reduce((acc, value) => acc + value);
+        return total.toFixed(2);
+      }
+      return 0;
     },
 
   },
@@ -56,6 +60,7 @@ export default {
     limpar() {
       clearLocalCheckout();
     },
+
   },
 };
 </script>

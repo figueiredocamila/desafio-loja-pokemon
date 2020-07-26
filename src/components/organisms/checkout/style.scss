@@ -44,12 +44,24 @@
   }
 
   &__body {
-    height: calc(100% - 185px);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100% - 185px);
     overflow-y: scroll;
+
+    @media(min-width: 768px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 
   &__card {
+    width: 100%;
     padding: 8px;
+
+    @media(min-width: 768px) {
+      width: 50%;
+    }
   }
 
   &__resume {

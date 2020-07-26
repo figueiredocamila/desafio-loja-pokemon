@@ -2,9 +2,11 @@
   <div class="home">
     <default-template v-slot:main>
       <div class="container">
-        <Input v-model="searchText" />
-        <Shelf :products="products" />
-        <Checkout v-if="checkoutOpened" />
+        <div class="container__shelf">
+          <search-input v-model="searchText" />
+          <Shelf :products="products" />
+        </div>
+        <Checkout v-if="checkoutOpen" />
       </div>
     </default-template>
   </div>
@@ -14,7 +16,7 @@
 import DefaultTemplate from '@/components/templates/defaultTemplate/DefaultTemplate.vue';
 import Shelf from '@/components/organisms/shelf/Shelf.vue';
 import Checkout from '@/components/organisms/checkout/Checkout.vue';
-import Input from '@/components/atoms/input/Input.vue';
+import SearchInput from '@/components/atoms/searchInput/SearchInput.vue';
 
 export default {
   name: 'Home',
@@ -23,7 +25,7 @@ export default {
     DefaultTemplate,
     Shelf,
     Checkout,
-    Input,
+    SearchInput,
   },
 
   data: () => ({
@@ -31,7 +33,7 @@ export default {
   }),
 
   computed: {
-    checkoutOpened() {
+    checkoutOpen() {
       return this.$store.state.checkoutStatus;
     },
 
@@ -45,6 +47,7 @@ export default {
   },
 
   created() {
+    this.isDesktop();
     window.addEventListener('resize', this.isDesktop);
     this.$store.dispatch('getProductList');
   },
@@ -56,7 +59,10 @@ export default {
   methods: {
     isDesktop() {
       if (window.outerWidth >= 1366) {
+        console.log('entrou');
         this.$store.commit('setCheckoutStatus', true);
+      } else {
+        this.$store.commit('setCheckoutStatus', false);
       }
     },
 
