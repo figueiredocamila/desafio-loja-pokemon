@@ -2,9 +2,9 @@
   <div class="header">
     <span class="header__title">PokeStore.</span>
     <icon-button
-      :count="10"
+      :count="count"
       :imageUrl="require('@/assets/backpack.svg')"
-      @onClick="isCheckoutOpen(true)"
+      @onClick="() => isCheckoutOpen(true)"
     />
   </div>
 </template>
@@ -13,9 +13,14 @@ import IconButton from '@/components/atoms/iconButton/IconButton.vue';
 
 export default {
   name: 'Header',
-  props: ['count'],
   components: {
     IconButton,
+  },
+
+  computed: {
+    count() {
+      return this.$store.getters.checkoutList.length;
+    },
   },
 
   methods: {

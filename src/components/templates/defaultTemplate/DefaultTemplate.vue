@@ -1,7 +1,13 @@
 <template>
-  <div>
-    <Header />
-    <Footer />
+  <div class="defaultTemplate">
+    <slot name="header">
+      <Header />
+    </slot>
+    <slot name="main">
+    </slot>
+    <slot name="footer">
+      <Footer />
+    </slot>
   </div>
 </template>
 <script>
@@ -13,6 +19,5 @@ export default {
     Header,
     Footer,
   },
-
 };
 </script>

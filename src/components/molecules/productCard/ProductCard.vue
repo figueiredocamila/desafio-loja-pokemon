@@ -1,33 +1,52 @@
 <template>
   <div :class="`product-card ${isCheckout ? 'product-card--checkout' : ''}`">
     <div class="product-card__image-wrap">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" />
+      <img
+        :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIdFromUrl(product.url)}.png` || '@/assets/image-not-available'"
+      />
     </div>
-    <span class="product-card__title">{{pokemon || 'Charizard'}}</span>
-    <span class="product-card__price">R$ {{price || '100,00'}}</span>
+    <div :class="`product-card${isCheckout ? '__info-wrap--checkout' : '__info-wrap'}`">
+      <span class="product-card__title">{{product.name || 'Nome do produto'}}</span>
+      <span class="product-card__price">R$ {{product.price || 'Preço do produto'}}</span>
+    </div>
+    <div class="product-card__actions" v-if="isCheckout">
+      <icon-button
+      :text="'Excluir'"
+      :imageUrl="require('@/assets/delete.svg')"
+      @onClick="() => deleteProductFromCheckout(product)"/>
+    </div>
     <Button v-if="!isCheckout"
       :text="'incluir na mochila'"
-      :onClick="() => adiciona(pokemon, price)"/>
+      @onClick="() => addItemToCheckout(product)"/>
   </div>
 </template>
 
 <script>
 import Button from '@/components/atoms/button/Button.vue';
+import IconButton from '@/components/atoms/iconButton/IconButton.vue';
 
 export default {
   name: 'ProductCard',
 
-  props: ['pokemon', 'price', 'onClick', 'imgUrl', 'isCheckout'],
+  props: ['product', 'isCheckout'],
 
   components: {
     Button,
+    IconButton,
   },
 
   methods: {
-    adiciona(pokemon, price) {
-      console.log('adicionado');
-      console.log('pokemon', pokemon);
-      console.log('price', price);
+    addItemToCheckout(item) {
+      this.$store.dispatch('addItemsToCheckout', item);
+    },
+
+    deleteProductFromCheckout() {
+      console.log('camila');
+    },
+
+    getIdFromUrl(url) {
+      const arr = url.split('/');
+      return arr[arr.length - 2];
     },
   },
 };
