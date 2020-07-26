@@ -1,17 +1,22 @@
 <template>
   <div class="checkout">
-    <div class="checkout__title">
-      <span>Mochila</span>
-      <IconButton :imageUrl="require('@/assets/close.svg')" :onClick="isCheckoutOpen(false)" />
-    </div>
-    <div class="checkout__body">
-      <div class="checkout__body--card" v-for="product in 10" :key="product.id">
-        <product-card :isCheckout="true" />
+    <div class="overlay"></div>
+    <div class="checkout__content">
+      <div class="checkout__title">
+        <span>Mochila</span>
+        <icon-button
+        :imageUrl="require('@/assets/close.svg')"
+        @onClick="() => isCheckoutOpen(false)" />
       </div>
-    </div>
-    <div class="checkout__resume">
-      <Resume :value="value"/>
-      <Button :text="`finalizar compra`" />
+      <div class="checkout__body">
+        <div class="checkout__card" v-for="product in checkoutList" :key="product.id">
+          <product-card :product="product" :isCheckout="true" />
+        </div>
+      </div>
+      <div class="checkout__resume">
+        <Resume :value="value"/>
+        <Button :text="`finalizar compra`" />
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +33,13 @@ export default {
     IconButton,
     ProductCard,
     Resume,
+  },
+
+  computed: {
+    checkoutList() {
+      return this.$store.getters.checkoutList;
+    },
+
   },
 
   methods: {

@@ -1,7 +1,13 @@
 <template>
-  <div>
-    <Header />
-    <Footer />
+  <div class="default">
+    <slot name="header">
+      <Header />
+    </slot>
+    <slot name="main">
+    </slot>
+    <slot name="footer">
+      <Footer />
+    </slot>
   </div>
 </template>
 <script>
@@ -16,3 +22,6 @@ export default {
 
 };
 </script>
+<style lang="scss">
+  @import './style.scss';
+</style>

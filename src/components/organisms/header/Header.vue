@@ -4,7 +4,7 @@
     <icon-button
       :count="10"
       :imageUrl="require('@/assets/backpack.svg')"
-      @onClick="isCheckoutOpen(true)"
+      @onClick="() => isCheckoutOpen(true)"
     />
   </div>
 </template>

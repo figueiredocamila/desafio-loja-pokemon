@@ -1,0 +1,24 @@
+.shelf {
+    padding: 12px;
+    margin-top: 65px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    
+
+    @media(min-width: 768px) {
+        margin-top: 0px;
+    }
+
+    &__card {
+        padding: 8px;
+
+        @media(min-width: 768px) {
+            width: 50%;
+        }
+
+        @media(min-width: 1366px) {
+            width: 25%;
+        }
+    }
+}

@@ -10,9 +10,19 @@
     background-color: #1E80A8;
     border-bottom: 1px solid #E6E3D8;
 
+    @media(min-width: 768px) {
+        position: static;
+    }
+
     &__title {
         font-size: 1.5em;
         font-weight: bold;
         color: white;
+    }
+
+    & > button {
+        @media(min-width: 1366px) {
+            display: none;
+        }
     }
 }
