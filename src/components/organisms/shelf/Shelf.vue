@@ -1,7 +1,7 @@
 <template>
 <div class="shelf">
   <div class="shelf__card" v-for="product in products" :key="product.id">
-    <product-card :product="product.pokemon" />
+    <product-card :product="product" />
   </div>
 </div>
 </template>
@@ -12,10 +12,6 @@ export default {
   name: 'Shelf',
 
   props: ['products'],
-
-  data: () => ({
-    searchText: '',
-  }),
 
   components: {
     ProductCard,

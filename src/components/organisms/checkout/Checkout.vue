@@ -15,7 +15,7 @@
       </div>
       <div class="checkout__resume">
         <Resume :value="value"/>
-        <Button :text="`finalizar compra`" />
+        <Button :text="`finalizar compra`" @onClick="limpar" />
       </div>
     </div>
   </div>
@@ -25,6 +25,7 @@ import Button from '@/components/atoms/button/Button.vue';
 import IconButton from '@/components/atoms/iconButton/IconButton.vue';
 import ProductCard from '@/components/molecules/productCard/ProductCard.vue';
 import Resume from '@/components/molecules/resume/Resume.vue';
+import { clearLocalCheckout } from '@/utils/localCheckout';
 
 export default {
   props: ['value'],
@@ -45,6 +46,10 @@ export default {
   methods: {
     isCheckoutOpen(status) {
       this.$store.commit('setCheckoutStatus', status);
+    },
+
+    limpar() {
+      clearLocalCheckout();
     },
   },
 };

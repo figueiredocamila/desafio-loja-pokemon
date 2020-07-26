@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import PokeApi from '@/services/PokeApi';
+import { getLocalCheckout, setLocalCheckout } from '@/utils/localCheckout';
 
 Vue.use(Vuex);
 
@@ -9,7 +10,7 @@ const store = new Vuex.Store({
   state: {
     checkoutStatus: false,
     productList: [],
-    checkoutList: [],
+    checkoutList: getLocalCheckout() || [],
   },
 
   getters: {
@@ -26,8 +27,8 @@ const store = new Vuex.Store({
   actions: {
     async getProductList({ commit }) {
       try {
-        const productList = (await PokeApi.getPokemonList()).data.pokemon;
-        console.log(productList);
+        let productList = (await PokeApi.getPokemonList()).data.pokemon;
+        productList = productList.map((item) => item.pokemon);
         commit('setProductList', productList);
       } catch (error) {
         console.log(error);
@@ -54,6 +55,7 @@ const store = new Vuex.Store({
 
     setCheckoutList(state, payload) {
       state.checkoutList = [...state.checkoutList, payload];
+      setLocalCheckout(JSON.stringify(state.checkoutList));
     },
   },
 

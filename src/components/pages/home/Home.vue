@@ -28,7 +28,6 @@ export default {
 
   data: () => ({
     searchText: '',
-    windowSize: null,
   }),
 
   computed: {
@@ -37,7 +36,11 @@ export default {
     },
 
     products() {
-      return this.$store.getters.productList;
+      const { productList } = this.$store.getters;
+      if (this.searchText) {
+        return productList.filter((item) => item.name.includes(this.searchText));
+      }
+      return productList;
     },
   },
 
@@ -56,6 +59,7 @@ export default {
         this.$store.commit('setCheckoutStatus', true);
       }
     },
+
   },
 
 };
