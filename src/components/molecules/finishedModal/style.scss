@@ -1,0 +1,62 @@
+.finished-modal {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+
+  &__info {
+    width: 90%;
+    height: 200px;
+    background-color: white;
+    border: 2px solid #CE5043;
+    border-radius: 4px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1.3em;
+    font-weight: bold;
+    position: relative;
+
+    @media(min-width: 768px) {
+      width: 50%;
+      height: 300px;
+      font-size: 1.9em;
+    }
+
+    @media(min-width: 1366px) {
+      width: 40%;
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  &__cashback {
+    font-size: 1.5em;
+    color: #CE5043;
+  }
+
+  &__message {
+    display: flex;
+    flex-direction: column;
+    color: #CE5043;
+  }
+}
+
+.overlay-modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .5);
+
+}

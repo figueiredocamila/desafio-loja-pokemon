@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+
     <default-template v-slot:main>
       <div class="container">
         <div class="container__shelf">
@@ -9,6 +10,7 @@
         <Checkout v-if="checkoutOpen" />
       </div>
     </default-template>
+
   </div>
 </template>
 
@@ -37,6 +39,11 @@ export default {
       return this.$store.state.checkoutStatus;
     },
 
+    // modalOpen() {
+    //   console.log(this.$store.state.checkoutStatus);
+    //   return this.$store.state.checkoutStatus;
+    // },
+
     products() {
       const { productList } = this.$store.getters;
       if (this.searchText) {
@@ -59,7 +66,6 @@ export default {
   methods: {
     isDesktop() {
       if (window.outerWidth >= 1366) {
-        console.log('entrou');
         this.$store.commit('setCheckoutStatus', true);
       } else {
         this.$store.commit('setCheckoutStatus', false);

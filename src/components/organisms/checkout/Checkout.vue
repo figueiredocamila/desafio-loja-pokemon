@@ -15,9 +15,12 @@
       </div>
       <div class="checkout__resume">
         <Resume :value="totalCheckout"/>
-        <Button :text="`finalizar compra`" @onClick="limpar" />
+        <Button :text="`finalizar compra`" @onClick="() => buyItems()" />
       </div>
     </div>
+
+    <finished-modal :value="totalCheckout" v-if="modalOpen" />
+
   </div>
 </template>
 <script>
@@ -25,6 +28,8 @@ import Button from '@/components/atoms/button/Button.vue';
 import IconButton from '@/components/atoms/iconButton/IconButton.vue';
 import ProductCard from '@/components/molecules/productCard/ProductCard.vue';
 import Resume from '@/components/molecules/resume/Resume.vue';
+
+import FinishedModal from '@/components/molecules/finishedModal/FinishedModal.vue';
 import { clearLocalCheckout } from '@/utils/localCheckout';
 
 export default {
@@ -33,11 +38,20 @@ export default {
     IconButton,
     ProductCard,
     Resume,
+    FinishedModal,
   },
+
+  data: () => ({
+    modal: false,
+  }),
 
   computed: {
     checkoutList() {
       return this.$store.getters.checkoutList;
+    },
+
+    modalOpen() {
+      return this.$store.state.modal;
     },
 
     totalCheckout() {
@@ -56,8 +70,16 @@ export default {
       this.$store.commit('setCheckoutStatus', status);
     },
 
-    limpar() {
-      clearLocalCheckout();
+    buyItems() {
+      if (this.checkoutList.length > 0) {
+        if (window.outerWidth < 1366) {
+          this.$store.commit('setCheckoutStatus', false);
+        }
+        this.$store.commit('setModalStatus', true);
+        clearLocalCheckout();
+      } else {
+        alert('Selecione um item.');
+      }
     },
 
   },

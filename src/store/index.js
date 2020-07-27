@@ -9,6 +9,7 @@ const store = new Vuex.Store({
 
   state: {
     checkoutStatus: false,
+    modal: false,
     productList: [],
     checkoutList: getLocalCheckout() || [],
   },
@@ -58,6 +59,10 @@ const store = new Vuex.Store({
   mutations: {
     setCheckoutStatus(state, payload) {
       state.checkoutStatus = payload;
+    },
+
+    setModalStatus(state, payload) {
+      state.modal = payload;
     },
 
     setProductList(state, payload) {

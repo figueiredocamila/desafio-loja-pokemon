@@ -23,7 +23,6 @@ export default {
     },
 
     headerColor() {
-      console.log(process.env.VUE_APP_POKEMON_TYPE);
       if (process.env.VUE_APP_POKEMON_TYPE === '10') {
         return '#CE5043';
       }
