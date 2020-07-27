@@ -6,6 +6,7 @@
 </template>
 <script>
 export default {
+  nome: 'Resume',
   props: ['value'],
 };
 </script>
