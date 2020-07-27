@@ -72,9 +72,6 @@ export default {
 
     buyItems() {
       if (this.checkoutList.length > 0) {
-        if (window.outerWidth < 1366) {
-          this.$store.commit('setCheckoutStatus', false);
-        }
         this.$store.commit('setModalStatus', true);
         clearLocalCheckout();
       } else {

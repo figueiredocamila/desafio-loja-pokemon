@@ -41,6 +41,9 @@ export default {
 
   methods: {
     closeModal() {
+      if (window.outerWidth < 1366) {
+        this.$store.commit('setCheckoutStatus', false);
+      }
       this.$store.commit('setModalStatus', false);
       this.$store.commit('removeItemFromCheckoutList', []);
     },
