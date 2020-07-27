@@ -12,7 +12,6 @@
     width: 90%;
     height: 200px;
     background-color: white;
-    border: 2px solid #CE5043;
     border-radius: 4px;
     padding: 8px;
     display: flex;
@@ -41,13 +40,11 @@
 
   &__cashback {
     font-size: 1.5em;
-    color: #CE5043;
   }
 
   &__message {
     display: flex;
     flex-direction: column;
-    color: #CE5043;
   }
 }
 

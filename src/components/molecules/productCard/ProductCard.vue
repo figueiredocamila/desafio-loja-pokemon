@@ -35,6 +35,15 @@ export default {
     IconButton,
   },
 
+  computed: {
+    themeColor() {
+      if (process.env.VUE_APP_POKEMON_TYPE === '10') {
+        return '#078C74';
+      }
+      return '#24CA64';
+    },
+  },
+
   methods: {
     addItemToCheckout(item) {
       this.$store.dispatch('addItemToCheckout', item);
