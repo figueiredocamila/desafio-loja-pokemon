@@ -1,7 +1,7 @@
 <template>
 <div class="checkout-resume">
   <span>Total:</span>
-  <span>R$ {{value}}</span>
+  <span>{{value}}</span>
 </div>
 </template>
 <script>

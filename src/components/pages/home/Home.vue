@@ -65,7 +65,7 @@ export default {
 
   methods: {
     isDesktop() {
-      if (window.outerWidth >= 1366) {
+      if (window.innerWidth >= 1366) {
         this.$store.commit('setCheckoutStatus', true);
       } else {
         this.$store.commit('setCheckoutStatus', false);

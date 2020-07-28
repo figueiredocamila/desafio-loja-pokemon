@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="checkout__resume">
-        <Resume :value="totalCheckout"/>
+        <Resume :value="formatCurrency(totalCheckout)"/>
         <Button :text="`finalizar compra`" @onClick="() => buyItems()" />
       </div>
     </div>
@@ -31,6 +31,7 @@ import Resume from '@/components/molecules/resume/Resume.vue';
 
 import FinishedModal from '@/components/molecules/finishedModal/FinishedModal.vue';
 import { clearLocalCheckout } from '@/utils/localCheckout';
+import formatMoney from '@/utils/formatMoney';
 
 export default {
   components: {
@@ -58,7 +59,7 @@ export default {
       if (this.checkoutList.length > 0) {
         const productPrices = this.checkoutList.map((list) => list.price);
         const total = productPrices.reduce((acc, value) => acc + value);
-        return total.toFixed(2);
+        return total;
       }
       return 0;
     },
@@ -77,6 +78,10 @@ export default {
       } else {
         alert('Selecione um item.');
       }
+    },
+
+    formatCurrency(val) {
+      return formatMoney.format(val);
     },
 
   },

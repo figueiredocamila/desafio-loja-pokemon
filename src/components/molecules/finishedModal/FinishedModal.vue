@@ -1,21 +1,22 @@
 <template>
   <div class="finished-modal">
     <div class="overlay-modal"></div>
-    <div class="finished-modal__info" :style="`border: 2px solid ${themeColor}`">
+    <div class="finished-modal__info" >
       <icon-button
       class="finished-modal__actions"
       :imageUrl="require('@/assets/close.svg')"
       @onClick="closeModal"/>
-      <div class="finished-modal__message" :style="`color: ${themeColor}`">
+      <div class="finished-modal__message">
         <span>Obrigado!!!</span>
         <span>Você ganhou de volta</span>
       </div>
-      <span class="finished-modal__cashback" :style="`color: ${themeColor}`">R$ {{cashback}}</span>
+      <span class="finished-modal__cashback">{{formatCurrency(cashback)}}</span>
     </div>
   </div>
 </template>
 <script>
 import IconButton from '@/components/atoms/iconButton/IconButton.vue';
+import formatMoney from '@/utils/formatMoney';
 
 export default {
   name: 'FinishedModal',
@@ -28,18 +29,16 @@ export default {
 
   computed: {
     cashback() {
-      return (this.value / 10).toFixed(2);
-    },
-
-    themeColor() {
-      if (process.env.VUE_APP_POKEMON_TYPE === '10') {
-        return '##CE5043';
-      }
-      return '#1E80A8';
+      return (this.value / 10);
     },
   },
 
   methods: {
+
+    formatCurrency(val) {
+      return formatMoney.format(val);
+    },
+
     closeModal() {
       if (window.outerWidth < 1366) {
         this.$store.commit('setCheckoutStatus', false);
