@@ -1,8 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import IconButton from '@/components/atoms/iconButton/IconButton.vue';
 
-const wrapper = shallowMount(IconButton);
-
 function getMountedComponent(Component, propsData) {
   return shallowMount(Component, {
     propsData,

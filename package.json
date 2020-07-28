@@ -8,7 +8,6 @@
     "build:fire": "vue-cli-service build --mode prodfire",
     "build:water": "vue-cli-service build --mode prodwater",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

@@ -10,7 +10,6 @@ import ProductCard from '@/components/molecules/productCard/ProductCard.vue';
 
 export default {
   name: 'Shelf',
-
   props: ['products'],
 
   components: {

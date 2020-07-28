@@ -22,7 +22,6 @@ import SearchInput from '@/components/atoms/searchInput/SearchInput.vue';
 
 export default {
   name: 'Home',
-
   components: {
     DefaultTemplate,
     Shelf,
@@ -38,11 +37,6 @@ export default {
     checkoutOpen() {
       return this.$store.state.checkoutStatus;
     },
-
-    // modalOpen() {
-    //   console.log(this.$store.state.checkoutStatus);
-    //   return this.$store.state.checkoutStatus;
-    // },
 
     products() {
       const { productList } = this.$store.getters;

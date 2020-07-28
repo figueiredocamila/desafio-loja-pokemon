@@ -1,8 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import Resume from '@/components/molecules/resume/Resume.vue';
 
-const wrapper = shallowMount(Resume);
-
 function getMountedComponent(Component, propsData) {
   return shallowMount(Component, {
     propsData,
