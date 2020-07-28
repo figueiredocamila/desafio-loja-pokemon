@@ -9,6 +9,7 @@
 </template>
 <script>
 export default {
+  name: 'IconButton',
   props: ['count', 'imageUrl', 'text'],
 };
 </script>

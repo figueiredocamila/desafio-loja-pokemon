@@ -34,6 +34,7 @@ import { clearLocalCheckout } from '@/utils/localCheckout';
 import formatMoney from '@/utils/formatMoney';
 
 export default {
+  name: 'Checkout',
   components: {
     Button,
     IconButton,
@@ -76,6 +77,7 @@ export default {
         this.$store.commit('setModalStatus', true);
         clearLocalCheckout();
       } else {
+        // eslint-disable-next-line no-alert
         alert('Selecione um item.');
       }
     },

@@ -30,7 +30,6 @@ import formatMoney from '@/utils/formatMoney';
 
 export default {
   name: 'ProductCard',
-
   props: ['product', 'isCheckout'],
 
   components: {

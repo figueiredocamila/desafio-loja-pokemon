@@ -20,7 +20,6 @@ import formatMoney from '@/utils/formatMoney';
 
 export default {
   name: 'FinishedModal',
-
   props: ['value'],
 
   components: {

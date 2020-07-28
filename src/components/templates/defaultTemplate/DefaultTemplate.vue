@@ -15,6 +15,7 @@ import Header from '@/components/organisms/header/Header.vue';
 import Footer from '@/components/organisms/footer/Footer.vue';
 
 export default {
+  name: 'DefaultTemplate',
   components: {
     Header,
     Footer,
